@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>atricle_page</title>
+    <link rel="stylesheet" href="{% static "css/reset.css" %}">
+    <link rel="stylesheet" href="{% static "css/main.css" %}">
+    <link rel="stylesheet" href="{% static "css/font-awesome.css" %}">
+    <link rel="stylesheet" href="{% static "css/font-awesome.min.css" %}">
+</head>
+<body>
+<div class="main-wrapper">
+    <header>
+        <nav>
+            <ul>
+                <li>
+<a href="{% url 'blog:home_page' %}">返回首页</a>
+                </li>
+                <li>
+                    <a href="{% url 'blog:edit_page' article.id %}" >修改文章</a>
+                </li>
+            </ul>
+        </nav>
+        <div id="banner2">
+            <div class="inner">
+            </div>
+        </div>
+    </header>
+    <div class="content">
+        <section class="dark-section">
+            <div class="article-preview">
+            <div class="img-section">
+                <img src="{% static 'img/pic03.jpg' %}" alt="">
+            </div>
+            <div class="text-section">
+                <h2>
+                    {{article.title}}
+                </h2>
+
+<br>
+                <ul>
+                    <li>
+                       <h3>{{article.content}}</h3>
+                    </li>
+                </ul>
+
+
+
+<br>
+                </div>
+            </div>
+
+        </section>
+    </div>
+    <footer>        <!--页脚-->
+        <ul class="share-group">
+            <li>参禅</li>
+            <li>诵经</li>
+            <li>化缘</li>
+            <li>天才</li>
+        </ul>
+        <div class="copy">
+            &copy TFflyme - 2018  |  CNPU   Y18264
+        </div>
+    </footer>
+</div>
+</body>
+</html>

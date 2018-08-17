@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>Edit Page</title>
+    <link rel="stylesheet" href="{% static "css/reset.css" %}">
+    <link rel="stylesheet" href="{% static "css/main.css" %}">
+    <link rel="stylesheet" href="{% static "css/font-awesome.css" %}">
+    <link rel="stylesheet" href="{% static "css/font-awesome.min.css" %}">
+    <link rel="script" href="{% static "release/wangEditor.js" %}>
+
+</head>
+<body>
+<div class="main-wrapper">
+    <header>
+        <nav>
+            <ul>
+                <li>
+                    <a href="{% url 'blog:home_page' %}">返回首页</a>
+                </li>
+            </ul>
+        </nav>
+        <div id="banner2">
+            <div class="inner">
+            </div>
+        </div>
+    </header>
+    <div class="content " >
+        <section class="dark-section" style="height:800px;background:  url({% static "img/banner.jpg" %})">
+                <div class="text-section">
+    <form action="{% url 'blog:edit_action' %}" method="post">
+    {% csrf_token %}
+    <input type="hidden" name="article_id" value="{{article.id | default:'0' }}"/>
+    <br>
+    <label>文章标题</label>
+<br>
+        <br>
+    <input type="text" name="title" value="{{article.title}}" style="width: 500px ;height: 20px;
+position: relative;top: 0px;margin: 0px;
+font-size: 15px;
+background-color:rgba(226,237,190,0.75);
+color:#417690"/>
+        <br>
+<br>
+    <label>文章内容</label>
+        <br>
+    <input type="hidden" id="ctct" name="content" value="{{article.content}}"  style="width: 500px ;height: 128px;font-size: 15px;"/>
+    <br>
+        <div class="fwb ">
+            <div id="editor" style="width: 730px ;height: 330px;font-size: 15px;
+background-color:rgba(226,237,190,0.75)">
+
+                <p>{{article.content}}</p>
+            </div>
+            <button id="btn1" style="border: none;
+    background-color: #205067;
+    color: #f7f7f7;
+    padding: 10px;border: none;
+    position: relative;left: 190px;top: 12px;
+    font-size: 16px;" >保存</button>
+            <script type="text/javascript" src="{% static "release/wangEditor.js" %}"></script>
+            <script type="text/javascript">
+            var E = window.wangEditor
+            var editor = new E('#editor')
+            editor.create()
+            var ctct=document.getElementById("ctct");
+            document.getElementById('btn1').addEventListener('click', function () {
+                // GET html
+                ctct.value=editor.txt.text()
+                alert('保存成功')
+            }, false)
+
+
+            </script>
+        </div>
+
+    </form>
+                </div>
+
+        </section>
+    </div>
+
+    <footer>        <!--页脚-->
+        <ul class="share-group">
+            <li>参禅</li>
+            <li>诵经</li>
+            <li>化缘</li>
+            <li>天才</li>
+        </ul>
+        <div class="copy">
+            &copy TFflyme - 2018  |  CNPU   Y18264
+        </div>
+    </footer>
+</div>
+</body>
+</html>
