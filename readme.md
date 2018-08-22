@@ -10,5 +10,6 @@
 python manage.py runserver
 ```
 
-![wallpaper_5230889]($resource/wallpaper_5230889.jpg)
+![pic03](demo/blog/static/img/pic03.jpg)
+
 
